@@ -1,10 +1,12 @@
-title: "dadatoa.github.io"
+title: "Hyperspace - Jekyll"
 
-description: "mon site/blog de test Jekyll/Github Pages. J'utilise le thème minima fourni par défaut avec Github Pages"
+description: 
+  "Just another fine responsive site template designed by [HTML5 UP](http://html5up.net)
+  
+  and released for free under the [Creative Commons](http://html5up.net/license)."
 
 show_excerpts: true
-
-#theme: minima
+# excerpt_separator: <!--more-->  # you can specify your own separator, of course.
 
 github_username: dadatoa
 
@@ -29,3 +31,5 @@ exclude : [
 # disable_disk_cache: BOOL - évite la création d'un repertoire de cache type .jekyll-cache
 disable_disk_cache: true
 
+collections:
+  - home-sections

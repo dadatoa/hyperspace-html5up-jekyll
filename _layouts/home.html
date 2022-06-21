@@ -2,15 +2,15 @@
 layout: default
 ---
 
+{% assign sections = site.home-sections %}
 <!-- Sidebar -->
 <section id="sidebar">
     <div class="inner">
         <nav>
             <ul>
-                <li><a href="#intro">Welcome</a></li>
-                <li><a href="#one">Who we are</a></li>
-                <li><a href="#two">What we do</a></li>
-                <li><a href="#three">Get in touch</a></li>
+                {% for section in sections %}
+                <li><a href="#{{ section.html_id }}">{{ section.menu_ref }}</a></li>
+                {% endfor%}
             </ul>
         </nav>
     </div>
@@ -18,61 +18,119 @@ layout: default
 
 <!-- Wrapper -->
 <div id="wrapper">
+    
+{% for section in sections %}
+    
+    <!-- class diffère si intro ou pas : spécial intro -->
+    {% if section.html_id == "intro" %}
+    <section id="{{ section.html_id }}" class="wrapper {{ section.style }} fullscreen {{ section.animate}}">
+    {% else %}
+    <section id="{{ section.html_id }}" class="wrapper {{ section.style }} {{ section.animate}}">
+    {% endif %}
 
-    <!-- Intro -->
-        <section id="intro" class="wrapper style1 fullscreen fade-up">
-            <div class="inner">
-                <h1>Hyperspace</h1>
-                <p>Just another fine responsive site template designed by <a href="http://html5up.net">HTML5 UP</a><br />
-                and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
-                <ul class="actions">
-                    <li><a href="#one" class="button scrolly">Learn more</a></li>
-                </ul>
+    <!-- inner : bool -->
+    {% if section.inner %}
+        <div class="inner">
+    {% endif %}
+
+    <!-- special : intro -->
+    {% if section.html_id == "intro" %}
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description | markdownify }}</p>
+    
+        
+    {% endif %}
+
+    <!-- section : name -->
+        {% if section.name %}
+            <h2>{{ section.name }}</h2>
+        {% endif %}
+
+    <!-- section : descritption -->
+        {% if section.description %}
+            <p>{{ section. description }}</p>
+        {% endif %}
+    <!-- collection list -->  
+    {% if section.list_collection %}  
+    {% assign items = site.[section.list_collection] %}
+    {% for item in items limit:3 %}
+        <section>
+            <a href="#" class="image"><img src="images/{{ item.image }}" alt="" data-position="center center" /></a>
+            <div class="content">
+                <div class="inner">
+                    <h2>{{ item.title }}</h2>
+                    {%- if site.show_excerpts -%}
+                    <p>{{ item.excerpt }}</p>
+                    {%- endif -%}
+                    <ul class="actions">
+                        <li><a href="{{ item.url }}" class="button">Learn more</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
+    {% endfor %}
+    {% endif %}
+    <!-- fin liste collection -->
+    <!-- list features -->
+        {% if section.features %}
+        <div class="features">
+        {% for feature in section.features %}
+            <section>
+                <span class="icon solid major fa-{{ feature.icon }}"></span>
+                <h3>{{ feature.name }}</h3>
+                <p>{{ feature.description }}</p>
+            </section>
+        {% endfor %}
+        </div>
+        {% endif %}
+        <!-- fin list features -->
+
+        <!-- formulaire -->
+        {% if section.form %}
+            {% include {{ section.form }} %}
+        {% endif %}
+
+        <!-- CTA -->
+        {% if section.call_to_action %}
+        <ul class="actions">
+            <li><a href="{{ section.call_to_action.href }}" class="button {{ section.call_to_action.class }}">{{ section.call_to_action.label }}</a></li>
+        </ul>
+        {% endif %}
+        <!-- fin CTA -->
+    
+    <!-- fin inner -->
+        {% if section.inner %}            
+        </div>
+        {% endif %}
+
+    </section>
+{% endfor %}
+
+<!-- fin liquid -->
 
     <!-- One -->
-        <section id="one" class="wrapper style2 spotlights">
+    <!--    <section id="oneone" class="wrapper style2 spotlights">
+            {% for post in site.posts limit:3 %}
             <section>
-                <a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+                <a href="#" class="image"><img src="images/{{ post.image }}" alt="" data-position="center center" /></a>
                 <div class="content">
                     <div class="inner">
-                        <h2>Sed ipsum dolor</h2>
-                        <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+                        <h2>{{ post.title }}</h2>
+                        {%- if site.show_excerpts -%}
+                        <p>{{ post.excerpt }}</p>
+                        {%- endif -%}
                         <ul class="actions">
-                            <li><a href="generic.html" class="button">Learn more</a></li>
+                            <li><a href="{{ post.url }}" class="button">Learn more</a></li>
                         </ul>
                     </div>
                 </div>
             </section>
-            <section>
-                <a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-                <div class="content">
-                    <div class="inner">
-                        <h2>Feugiat consequat</h2>
-                        <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-                        <ul class="actions">
-                            <li><a href="generic.html" class="button">Learn more</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-                <div class="content">
-                    <div class="inner">
-                        <h2>Ultricies aliquam</h2>
-                        <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-                        <ul class="actions">
-                            <li><a href="generic.html" class="button">Learn more</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </section>
+            {% endfor %}
+        -->
 
     <!-- Two -->
-        <section id="two" class="wrapper style3 fade-up">
+    <!--
+        <section id="twoone" class="wrapper style3 fade-up">
             <div class="inner">
                 <h2>What we do</h2>
                 <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -113,9 +171,10 @@ layout: default
                 </ul>
             </div>
         </section>
+        -->
 
     <!-- Three -->
-        <section id="three" class="wrapper style1 fade-up">
+        <section id="threeone" class="wrapper style1 fade-up">
             <div class="inner">
                 <h2>Get in touch</h2>
                 <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
