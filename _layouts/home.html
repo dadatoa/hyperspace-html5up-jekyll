@@ -93,7 +93,33 @@ layout: default
 
         <!-- formulaire -->
         {% if section.form %}
-            {% include {{ section.form }} %}
+        <div class="split {{ section.style }}">
+        {% assign form = section.form %}
+            <section>
+                <form action="{{ form.action }}" method="{{ form.method }}">
+                    <div class="fields">
+                        {% for field in form.fields %}
+                        <div class="field {{ field.style }}">
+                            <label for="{{ field.label }}">{{ field.label | capitalize }}</label>
+                            {% case field.tag %}
+                                {% when "input" %}
+                            <input type="{{ field.type }}" name="{{ field.label }}" id="{{ field.label }}">
+
+                                {% when "textarea" %}
+                            <textarea name="{{ field.label }}" id="{{ field.label }}" rows="{{ field.rows }}"></textarea>
+                            {% endcase %}
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <ul class="actions">
+                        <li><a href="" class="button submit">Send Message</a></li>
+                    </ul>
+
+                </form>
+            </section>
+
+        </div>
         {% endif %}
 
         <!-- CTA -->
@@ -114,70 +140,6 @@ layout: default
 
 <!-- fin liquid -->
 
-    <!-- One -->
-    <!--    <section id="oneone" class="wrapper style2 spotlights">
-            {% for post in site.posts limit:3 %}
-            <section>
-                <a href="#" class="image"><img src="images/{{ post.image }}" alt="" data-position="center center" /></a>
-                <div class="content">
-                    <div class="inner">
-                        <h2>{{ post.title }}</h2>
-                        {%- if site.show_excerpts -%}
-                        <p>{{ post.excerpt }}</p>
-                        {%- endif -%}
-                        <ul class="actions">
-                            <li><a href="{{ post.url }}" class="button">Learn more</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            {% endfor %}
-        -->
-
-    <!-- Two -->
-    <!--
-        <section id="twoone" class="wrapper style3 fade-up">
-            <div class="inner">
-                <h2>What we do</h2>
-                <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-                <div class="features">
-                    <section>
-                        <span class="icon solid major fa-code"></span>
-                        <h3>Lorem ipsum amet</h3>
-                        <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-lock"></span>
-                        <h3>Aliquam sed nullam</h3>
-                        <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-cog"></span>
-                        <h3>Sed erat ullam corper</h3>
-                        <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-desktop"></span>
-                        <h3>Veroeros quis lorem</h3>
-                        <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-link"></span>
-                        <h3>Urna quis bibendum</h3>
-                        <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                    </section>
-                    <section>
-                        <span class="icon major fa-gem"></span>
-                        <h3>Aliquam urna dapibus</h3>
-                        <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                    </section>
-                </div>
-                <ul class="actions">
-                    <li><a href="generic.html" class="button">Learn more</a></li>
-                </ul>
-            </div>
-        </section>
-        -->
 
     <!-- Three -->
         <section id="threeone" class="wrapper style1 fade-up">
