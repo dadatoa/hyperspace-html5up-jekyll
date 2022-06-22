@@ -21,6 +21,5 @@ form:
         - label: message
           tag: "textarea"
           rows: "5"
-split: true
-
+split: contact.html
 ---

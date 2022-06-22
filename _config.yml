@@ -8,14 +8,27 @@ description:
 show_excerpts: true
 # excerpt_separator: <!--more-->  # you can specify your own separator, of course.
 
-github_username: dadatoa
+# contacts:
+adress: >
+  12345 Somewhere Road #654
+  Nashville, TN 00000-0000
+  USA
+
+email: some@email.com
+
+phone: (000) 000-0000
+
+socials:
+  github: dadatoa
+  instagram: dadatoa
+  facebook: dadatoa
 
 # présentation de la home page
 homepage-sections:
   - _home-sections/intro.md
   - _home-sections/list-posts.md
   - _home-sections/features.md
-  - _home-sections/contact.md
+  - _home-sections/contact-form.md
 
 plugins:
   - jekyll-seo-tag # 
