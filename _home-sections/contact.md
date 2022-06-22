@@ -1,6 +1,6 @@
 ---
 html_id: three
-menu_ref: get in touch
+title: get in touch
 name: get in touch
 style: style1
 animate: fade-up

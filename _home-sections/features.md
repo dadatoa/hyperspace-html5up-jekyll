@@ -1,6 +1,6 @@
 ---
 html_id: two
-menu_ref: what we do
+title: what we do
 name: what we do
 style: style3
 animate: fade-up

@@ -1,6 +1,6 @@
 ---
 html_id: intro
-menu_ref: Welcome
+title: Welcome
 # name: 
 style: style1
 animate: fade-up

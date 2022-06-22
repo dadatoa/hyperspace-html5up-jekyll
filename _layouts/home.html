@@ -2,14 +2,18 @@
 layout: default
 ---
 
-{% assign sections = site.home-sections %}
+{% assign sections = site.home-sections | map: "path" %}
+{% assign sections_paths = site.homepage-sections | default: sections %}
+{% assign titles_size = site.homepage-sections | map: 'title' | join: '' | size %}
+
 <!-- Sidebar -->
 <section id="sidebar">
     <div class="inner">
         <nav>
             <ul>
-                {% for section in sections %}
-                <li><a href="#{{ section.html_id }}">{{ section.menu_ref }}</a></li>
+                {% for path in sections_paths %}
+                {% assign my_section = site.home-sections | where: "path", path | first %}
+                <li><a href="#{{ my_section.html_id }}">{{ my_section.title }}</a></li>
                 {% endfor%}
             </ul>
         </nav>
@@ -19,8 +23,9 @@ layout: default
 <!-- Wrapper -->
 <div id="wrapper">
     
-{% for section in sections %}
-    
+{% for path in sections_paths %}
+{% assign section = site.home-sections | where: "path", path | first %}
+
     <!-- class diffère si intro ou pas : spécial intro -->
     {% if section.html_id == "intro" %}
     <section id="{{ section.html_id }}" class="wrapper {{ section.style }} fullscreen {{ section.animate}}">
@@ -71,6 +76,7 @@ layout: default
     {% endfor %}
     {% endif %}
     <!-- fin liste collection -->
+
     <!-- list features -->
         {% if section.features %}
         <div class="features">

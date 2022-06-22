@@ -1,6 +1,6 @@
 ---
 html_id: one
-menu_ref: who we are
+title: who we are
 # name: 
 style: style2
 animate: spotlights
