@@ -1,0 +1,30 @@
+<section>
+    <ul class="contact">
+        {% for item in site.contacts %}
+
+        <li>
+            {% case item[0]%}
+            {% when "socials" %}
+            <h3>Social networks</h3>
+            <ul class="icons">
+                {% assign socials = item[1] %}
+                {% for social in socials %}
+                    {% assign my_social = social[0] %}
+                    {% assign networks = site.data.social_networks.items | where: "name", my_social %}
+                    {% assign username = social[1] %}
+                    {% for network in networks %}
+                        <li><a href="{{network.url}}/{{ username }}" class="icon brands fa-{{ network.name }}"></a></li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+
+            {% else %}
+            <h3>{{ item[0] | capitalize }}</h3>
+            <span> {{ item[1] | newline_to_br }}</span>
+            {% endcase %}
+        </li>
+
+        {% endfor %}
+
+    </ul>
+</section>
