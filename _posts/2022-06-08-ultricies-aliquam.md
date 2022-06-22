@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: page
 title: Ultricies Aliquam
-image: pic01.jpg
+thumbnail: pic01.jpg
+illustration: pic04.jpg
 ---
 Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.
