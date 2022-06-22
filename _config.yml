@@ -1,21 +1,33 @@
 title: "Hyperspace - Jekyll"
 
-description: 
-  "Just another fine responsive site template designed by [HTML5 UP](http://html5up.net)
+description: >
+  Just another fine responsive site template designed by [HTML5 UP](http://html5up.net)
   
-  and released for free under the [Creative Commons](http://html5up.net/license)."
+  and released for free under the [Creative Commons](http://html5up.net/license).
 
 show_excerpts: true
-# excerpt_separator: <!--more-->  # you can specify your own separator, of course.
+# excerpt_separator: <!--more-->  ## you can specify your own separator.
 
-github_username: dadatoa
+
+## add your contact informations / or not : will appear on the home page (last section: get in touch)
+
+contacts:
+#  address: 12345 Somewhere Road 654<br />
+#           Nashville, TN 00000-0000<br /> 
+#           USA
+#   phone: (000) 000-0000
+  email: some@email.com
+  socials:
+    github: dadatoa
+    instagram: dadatoa
+    facebook: dadatoa
 
 # présentation de la home page
 homepage-sections:
   - _home-sections/intro.md
   - _home-sections/list-posts.md
   - _home-sections/features.md
-  - _home-sections/contact.md
+  - _home-sections/contact-form.md
 
 plugins:
   - jekyll-seo-tag # 
