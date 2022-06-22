@@ -1,28 +1,30 @@
 <section>
     <ul class="contact">
+        {% for item in site.contacts %}
+
         <li>
-            <h3>Address</h3>
-            <span>12345 Somewhere Road #654<br />
-            Nashville, TN 00000-0000<br />
-            USA</span>
-        </li>
-        <li>
-            <h3>Email</h3>
-            <a href="#">user@untitled.tld</a>
-        </li>
-        <li>
-            <h3>Phone</h3>
-            <span>(000) 000-0000</span>
-        </li>
-        <li>
-            <h3>Social</h3>
+            {% case item[0]%}
+            {% when "socials" %}
+            <h3>Social networks</h3>
             <ul class="icons">
-                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                {% assign socials = item[1] %}
+                {% for social in socials %}
+                    {% assign my_social = social[0] %}
+                    {% assign networks = site.data.social_networks.items | where: "name", my_social %}
+                    {% assign username = social[1] %}
+                    {% for network in networks %}
+                        <li><a href="{{network.url}}/{{ username }}" class="icon brands fa-{{ network.name }}"></a></li>
+                    {% endfor %}
+                {% endfor %}
             </ul>
+
+            {% else %}
+            <h3>{{ item[0] | capitalize }}</h3>
+            <span> {{ item[1] | newline_to_br }}</span>
+            {% endcase %}
         </li>
+
+        {% endfor %}
+
     </ul>
 </section>

@@ -1,0 +1,14 @@
+items: 
+  - {name: "dribbble", url: "https://dribbble.com"}
+  - {name: "facebook", url: "https://www.facebook.com"} 
+  - {name: "flickr", url: "https://www.flickr.com/photos"}
+  - {name: "github", url: "https://github.com"}
+  - {name: "stack-overflow", url: "https://stackoverflow.com/users"}
+  - {name: "instagram", url: "https://www.instagram.com"}
+  - {name: "linkedin", url: "https://www.linkedin.com/in"}
+  - {name: "pinterest", url: "https://www.pinterest.com"}
+  - {name: "twitter", url: "https://twitter.com"}
+  - {name: "youtube", url: "https://www.youtube.com"}
+  # - {name: "youtube_channel", url: "https://www.youtube.com/channel"}
+  - {name: "telegram", url: "https://t.me"}
+  - {name: "keybase", url: "https://keybase.io"}
