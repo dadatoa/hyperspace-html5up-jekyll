@@ -1,13 +1,13 @@
-.list{
-    background-color: pink;
-}
 
 .image{
     a{
         max-height: 3rem;
     }
 }
+
 .postcard{
     display:flex;
+    // background-color: _palette(accent2-alt);
+    background: linear-gradient(_palette(accent2), _palette(accent2-alt));
     
 }
