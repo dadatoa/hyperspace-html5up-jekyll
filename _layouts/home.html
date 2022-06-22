@@ -1,0 +1,221 @@
+---
+layout: default
+---
+
+{% assign sections = site.home-sections | map: "path" %}
+{% assign sections_paths = site.homepage-sections | default: sections %}
+{% assign titles_size = site.homepage-sections | map: 'title' | join: '' | size %}
+
+<!-- Sidebar -->
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                {% for path in sections_paths %}
+                {% assign my_section = site.home-sections | where: "path", path | first %}
+                <li><a href="#{{ my_section.html_id }}">{{ my_section.title }}</a></li>
+                {% endfor%}
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+    
+{% for path in sections_paths %}
+{% assign section = site.home-sections | where: "path", path | first %}
+
+    <!-- class diffère si intro ou pas : spécial intro -->
+    {% if section.html_id == "intro" %}
+    <section id="{{ section.html_id }}" class="wrapper {{ section.style }} fullscreen {{ section.animate}}">
+    {% else %}
+    <section id="{{ section.html_id }}" class="wrapper {{ section.style }} {{ section.animate}}">
+    {% endif %}
+
+    <!-- inner : bool -->
+    {% if section.inner %}
+        <div class="inner">
+    {% endif %}
+
+    <!-- special : intro -->
+    {% if section.html_id == "intro" %}
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description | markdownify }}</p>
+    
+        
+    {% endif %}
+
+    <!-- section : name -->
+        {% if section.name %}
+            <h2>{{ section.name }}</h2>
+        {% endif %}
+
+    <!-- section : descritption -->
+        {% if section.description %}
+            <p>{{ section. description }}</p>
+        {% endif %}
+    <!-- collection list -->  
+    {% if section.list_collection %}  
+    {% assign items = site.[section.list_collection] %}
+    {% for item in items limit:3 %}
+        <section>
+            <a href="#" class="image"><img src="images/{{ item.image }}" alt="" data-position="center center" /></a>
+            <div class="content">
+                <div class="inner">
+                    <h2>{{ item.title }}</h2>
+                    {%- if site.show_excerpts -%}
+                    <p>{{ item.excerpt }}</p>
+                    {%- endif -%}
+                    <ul class="actions">
+                        <li><a href="{{ item.url }}" class="button">Learn more</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+    {% endif %}
+    <!-- fin liste collection -->
+
+    <!-- list features -->
+        {% if section.features %}
+        <div class="features">
+        {% for feature in section.features %}
+            <section>
+                <span class="icon solid major fa-{{ feature.icon }}"></span>
+                <h3>{{ feature.name }}</h3>
+                <p>{{ feature.description }}</p>
+            </section>
+        {% endfor %}
+        </div>
+        {% endif %}
+        <!-- fin list features -->
+
+        <!-- formulaire -->
+        {% if section.form %}
+        <div class="split {{ section.style }}">
+        {% assign form = section.form %}
+            <section>
+                <form action="{{ form.action }}" method="{{ form.method }}">
+                    <div class="fields">
+                        {% for field in form.fields %}
+                        <div class="field {{ field.style }}">
+                            <label for="{{ field.label }}">{{ field.label | capitalize }}</label>
+                            {% case field.tag %}
+                                {% when "input" %}
+                            <input type="{{ field.type }}" name="{{ field.label }}" id="{{ field.label }}">
+
+                                {% when "textarea" %}
+                            <textarea name="{{ field.label }}" id="{{ field.label }}" rows="{{ field.rows }}"></textarea>
+                            {% endcase %}
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <ul class="actions">
+                        <li><a href="" class="button submit">Send Message</a></li>
+                    </ul>
+
+                </form>
+            </section>
+
+        </div>
+        {% endif %}
+
+        <!-- CTA -->
+        {% if section.call_to_action %}
+        <ul class="actions">
+            <li><a href="{{ section.call_to_action.href }}" class="button {{ section.call_to_action.class }}">{{ section.call_to_action.label }}</a></li>
+        </ul>
+        {% endif %}
+        <!-- fin CTA -->
+    
+    <!-- fin inner -->
+        {% if section.inner %}            
+        </div>
+        {% endif %}
+
+    </section>
+{% endfor %}
+
+<!-- fin liquid -->
+
+
+    <!-- Three -->
+        <section id="threeone" class="wrapper style1 fade-up">
+            <div class="inner">
+                <h2>Get in touch</h2>
+                <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+                <div class="split style1">
+                    <section>
+                        <form method="post" action="#">
+                            <div class="fields">
+                                <div class="field half">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" />
+                                </div>
+                                <div class="field half">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" id="email" />
+                                </div>
+                                <div class="field">
+                                    <label for="message">Message</label>
+                                    <textarea name="message" id="message" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <ul class="actions">
+                                <li><a href="" class="button submit">Send Message</a></li>
+                            </ul>
+                        </form>
+                    </section>
+                    <section>
+                        <ul class="contact">
+                            <li>
+                                <h3>Address</h3>
+                                <span>12345 Somewhere Road #654<br />
+                                Nashville, TN 00000-0000<br />
+                                USA</span>
+                            </li>
+                            <li>
+                                <h3>Email</h3>
+                                <a href="#">user@untitled.tld</a>
+                            </li>
+                            <li>
+                                <h3>Phone</h3>
+                                <span>(000) 000-0000</span>
+                            </li>
+                            <li>
+                                <h3>Social</h3>
+                                <ul class="icons">
+                                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                                    <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
