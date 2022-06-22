@@ -1,7 +1,7 @@
 ---
 html_id: intro
 title: Welcome
-# name: 
+show-title: false 
 style: style1
 animate: fade-up
 inner: true

@@ -1,7 +1,7 @@
 ---
 html_id: one
 title: who we are
-# name: 
+show-title: false 
 style: style2
 animate: spotlights
 list_collection: posts

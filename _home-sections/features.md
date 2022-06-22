@@ -1,7 +1,7 @@
 ---
 html_id: two
 title: what we do
-name: what we do
+show-title: true
 style: style3
 animate: fade-up
 inner: true

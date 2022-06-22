@@ -47,8 +47,8 @@ layout: default
     {% endif %}
 
     <!-- section : name -->
-        {% if section.name %}
-            <h2>{{ section.name }}</h2>
+        {% if section.show-title %}
+            <h2>{{ section.title | capitalize }}</h2>
         {% endif %}
 
     <!-- section : descritption -->

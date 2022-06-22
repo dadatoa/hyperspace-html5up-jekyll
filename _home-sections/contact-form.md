@@ -1,7 +1,7 @@
 ---
 html_id: three
 title: get in touch
-name: get in touch
+show-title: true
 style: style1
 animate: fade-up
 inner: true
