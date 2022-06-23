@@ -29,18 +29,22 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
+			{% for section in page.sections %}
+			{% case section.template %}
 				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
+				{% when "intro" %}
+					<section id="{{ section.id }}" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>{{ site.title }}</h1>
 							<p>{{ site.description | markdownify | newline_to_br }}</p>
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">Learn more</a></li>
-							</ul>
+							</ul>	
 						</div>
 					</section>
 
+			{% endcase %}
+			{% endfor %}
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
