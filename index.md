@@ -27,7 +27,7 @@ sections :
     - id: three
       html_id: three
       title: get in touch
-      template: contact-form # or change to follow-me if you just want to make contact info appear with email-me button
+      template: follow-me #contact-form or change to follow-me if you just want to make contact info appear with email-me button
       #show-title: true
       color-style: style1
       animate: fade-up
