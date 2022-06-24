@@ -159,18 +159,66 @@
 						{% endif %}
 					
 						<div class="split {{ section.color-style }}">
-							
-							<!--
-								remplir avec contact
-							-->
-						
-						{% if site.contacts.address %}
-							<section>
+						{% assign contacts = site.contacts %}
+						<!--
+							split 1
+						-->
+							<ul class="contact">
+								{% if contacts.address %}
+									{% if contacts.phone %}
+									{% assign offset = 2 %}
+									{% else %}
+										{% assign offset = 1 %}
+									{% endif %}
+								{% else %}
+								{% assign offset = 0 %}
+								{% endif %}
+								{% for contact in contacts offset:offset %}
+									{% case contact[0] %}
+									{% when "socials" %}
+									<li>
+										<h3>Follow me</h3>
+										<ul class="icons">
+											{% for social in contacts.socials %}
+											{% assign my_social = social[0] %}
+											{% assign networks = site.data.social_networks.items | where: "name", my_social %}
+												{% for network in networks %}
+												<li><a href="{{network.url}}/{{ username }}" class="medium icon brands fa-{{ network.name }}"></a></li>
+												{% endfor %}
+											{% endfor %}
+										</ul>
+									</li>
+									{% when "email" %}
+									<li>
+										<button class="button">Send me an E-mail</button>
+									</li>
+									{% else %}
+									<li>
+										<h3>{{ contact[0] | capitalize }}</h3>
+										<span>{{ contact[1] | newline_to_br }}</span>
+									</li>
+
+									{% endcase %}
+								{% endfor %}
+							</ul>
+						<!--
+							split 2
+						-->
+						{% if contacts.address %}
+							<ul class="contact">
+								<li>
 								<h3>Address</h3>
 								<span>
-									{{ site.contacts.address | newline_to_br }}
-								</span>
-							</section>
+									{{ contacts.address | newline_to_br }}
+									</span>
+									</li>
+								{% if contacts.phone %}
+								<li>
+									<h3>Telephone</h3>
+									<span>{{ contacts.phone }}</span>
+								</li>
+								{% endif %}
+							</ul>
 						{% endif %}
 							
 						</div>
