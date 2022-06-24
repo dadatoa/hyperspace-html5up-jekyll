@@ -129,7 +129,7 @@
             								        {% assign networks = site.data.social_networks.items | where: "name", my_social %}
             								        {% assign username = social[1] %}
             								        {% for network in networks %}
-            								            <li><a href="{{network.url}}/{{ username }}" class="icon brands fa-{{ network.name }}"></a></li>
+            								            <li><a href="{{network.url}}/{{ username }}" class="icon brands fa-{{ network.name }}" target="_blank"></a></li>
             								        {% endfor %}
             								    {% endfor %}
             								</ul>
@@ -183,7 +183,7 @@
 											{% assign my_social = social[0] %}
 											{% assign networks = site.data.social_networks.items | where: "name", my_social %}
 												{% for network in networks %}
-												<li><a href="{{network.url}}/{{ username }}" class="medium icon brands fa-{{ network.name }}"></a></li>
+												<li><a href="{{network.url}}/{{ username }}" class="medium icon brands fa-{{ network.name }}" target="_blank"></a></li>
 												{% endfor %}
 											{% endfor %}
 										</ul>
