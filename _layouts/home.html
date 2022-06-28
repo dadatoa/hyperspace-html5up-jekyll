@@ -47,8 +47,8 @@ layout: default
     {% endif %}
 
     <!-- section : name -->
-        {% if section.name %}
-            <h2>{{ section.name }}</h2>
+        {% if section.show-title %}
+            <h2>{{ section.title | capitalize }}</h2>
         {% endif %}
 
     <!-- section : descritption -->
@@ -66,13 +66,13 @@ layout: default
     {% assign items = site.[section.list_collection] %}
     {% for item in items limit:3 %}
         <section>
-            <a href="#" class="image"><img src="images/{{ item.image }}" alt="" data-position="center center" /></a>
+            <a href="#" class="image"><img src="images/{{ item.thumbnail }}" alt="" data-position="center center" /></a>
             <div class="content">
                 <div class="inner">
                     <h2>{{ item.title }}</h2>
-                    {%- if site.show_excerpts -%}
+                    {% if site.show_excerpts %}
                     <p>{{ item.excerpt }}</p>
-                    {%- endif -%}
+                    {% endif %}
                     <ul class="actions">
                         <li><a href="{{ item.url }}" class="button">Learn more</a></li>
                     </ul>

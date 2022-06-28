@@ -1,0 +1,45 @@
+---
+layout: generic
+---
+<section class="wrapper">
+    <div class="inner">
+    <h1 class="major">{{ page.title | capitalize }}</h1>
+
+    {% if page.illustration %}
+    <span class="image fit"><img src="{{ "/images" }}/{{ page.illustration }}" alt="" /></span>
+    {% endif %}
+
+
+    </div>
+</section>
+
+
+
+
+
+<section class="wrapper">
+    <div class="inner">
+    {% assign items = site.[page.collection] %}
+    {% for item in items %}
+
+    <article class="wrapper postcard">
+        {% if item.thumbnail %}
+        <a href="#" class="image"><img src="/images/{{ item.thumbnail }}" alt="" data-position="center center" /></a>
+        {% else %}
+        <a href="#" class="image"><img src="/images/pic03.jpg" alt="" data-position="center center" /></a>
+        {% endif %}
+        <div class="inner">
+            <h2>{{ item.title }}</h2>
+            {% if site.show_excerpts %}
+            <p>{{ item.excerpt }}</p>
+            {% endif %}
+            <ul class="actions">
+                <li><a href="{{ item.url }}" class="button">Learn more</a></li>
+            </ul>
+        </div>
+
+    </article>
+
+    {% endfor %}
+    </div>
+</section>
