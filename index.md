@@ -1,7 +1,7 @@
 ---
 layout: home2
 sections :
-# intro : layout hard coded form config info, should not be modified unless you know what you are doing
+# intro : layout hard coded from config info, should not be modified unless you know what you are doing
     - id: intro
       title: welcome
       template: intro
@@ -20,7 +20,6 @@ sections :
       #show-title: true
       color-style: style3
       animate: fade-up
-      inner: true
       source: pages
       description: Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
 # three 
@@ -28,9 +27,7 @@ sections :
       html_id: three
       title: get in touch
       template: follow-me #contact-form or change to follow-me if you just want to make contact info appear with email-me button
-      #show-title: true
       color-style: style1
       animate: fade-up
-      inner: true
       description: Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
 ---
