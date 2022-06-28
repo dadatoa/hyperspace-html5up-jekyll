@@ -1,4 +1,6 @@
 title: "Hyperspace - Jekyll"
+baseurl: "/hyperspace-html5up-jekyll" # the subpath of your site, e.g. /blog
+url: "https://dadatoa.github.io"
 
 description: >
   Just another fine responsive site template designed by [HTML5 UP](http://html5up.net)
