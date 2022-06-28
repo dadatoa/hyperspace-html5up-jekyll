@@ -71,9 +71,11 @@
 								{% for feature in site.[section.source] %}
 								{% if feature.title %}
 								<section>
+								<a href="{{ feature.url }}">
 									<span class="icon solid major fa-{{ feature.icon | default:"code" }}"></span>
 									<h3>{{ feature.title }}</h3>
 									<p>{{ feature.description | default:"Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus."}}</p>
+								</a>
 								</section>
 								{% endif %}
 								{% endfor %}
@@ -163,7 +165,7 @@
 						<!--
 							split 1
 						-->
-							<ul class="contact">
+							<div class="contact">
 								{% if contacts.address %}
 									{% if contacts.phone %}
 									{% assign offset = 2 %}
@@ -176,7 +178,7 @@
 								{% for contact in contacts offset:offset %}
 									{% case contact[0] %}
 									{% when "socials" %}
-									<li>
+									<span>
 										<h3>Follow me</h3>
 										<ul class="icons">
 											{% for social in contacts.socials %}
@@ -187,11 +189,16 @@
 												{% endfor %}
 											{% endfor %}
 										</ul>
-									</li>
+									</span>
 									{% when "email" %}
-									<li>
+									<!-- <li>
+										<a href="mailto:{{ site.email }}">
 										<button class="button">Send me an E-mail</button>
-									</li>
+										</a>
+									</li> -->
+									<ul class="actions">
+										<li><a href="mailto:{{ site.email }}" class="button">Send me an email</a></li>
+									</ul>
 									{% else %}
 									<li>
 										<h3>{{ contact[0] | capitalize }}</h3>
@@ -200,7 +207,7 @@
 
 									{% endcase %}
 								{% endfor %}
-							</ul>
+							</div>
 						<!--
 							split 2
 						-->

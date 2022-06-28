@@ -23,11 +23,11 @@ contacts:
     facebook: dadatoa
 
 # présentation de la home page
-homepage-sections:
-  - _home-sections/intro.md
-  - _home-sections/list-posts.md
-  - _home-sections/features.md
-  - _home-sections/contact-form.md
+# homepage-sections:
+#  - _home-sections/intro.md
+#  - _home-sections/list-posts.md
+#  - _home-sections/features.md
+#  - _home-sections/contact-form.md
 
 plugins:
   - jekyll-seo-tag # 
