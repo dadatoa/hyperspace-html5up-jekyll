@@ -1,5 +1,5 @@
 ---
-layout: home2
+layout: home
 sections :
 # intro : layout hard coded from config info, should not be modified unless you know what you are doing
     - id: intro
