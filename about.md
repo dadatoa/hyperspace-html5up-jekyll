@@ -2,6 +2,7 @@
 layout: page
 permalink: /about/
 title: "about"
+icon: wind
 ---
 Bienvenue sur mon blog test Jekyll.
 

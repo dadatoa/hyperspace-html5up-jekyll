@@ -12,10 +12,10 @@ show_excerpts: true
 ## add your contact informations / or not : will appear on the home page (last section: get in touch)
 
 contacts:
-#  address: 12345 Somewhere Road 654<br />
-#           Nashville, TN 00000-0000<br /> 
-#           USA
-#   phone: (000) 000-0000
+  address: 12345 Somewhere Road 654<br />
+             Nashville, TN 00000-0000<br /> 
+             USA
+  phone: (000) 000-0000  
   email: some@email.com
   socials:
     github: dadatoa
@@ -23,11 +23,11 @@ contacts:
     facebook: dadatoa
 
 # présentation de la home page
-homepage-sections:
-  - _home-sections/intro.md
-  - _home-sections/list-posts.md
-  - _home-sections/features.md
-  - _home-sections/contact-form.md
+# homepage-sections:
+#  - _home-sections/intro.md
+#  - _home-sections/list-posts.md
+#  - _home-sections/features.md
+#  - _home-sections/contact-form.md
 
 plugins:
   - jekyll-seo-tag # 

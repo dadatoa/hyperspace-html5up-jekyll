@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+		<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							{% for section in page.sections %}
+							<li><a href="#{{ section.id }}">{{ section.title }}</a></li>
+							{% endfor %}
+						</ul>
+					</nav>
+				</div>
+		</section>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+			{% for section in page.sections %}
+			{% case section.template %}
+
+				{% when "intro" %}
+					<section id="{{ section.id }}" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>{{ site.title }}</h1>
+							<p>{{ site.description | markdownify | newline_to_br }}</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">Learn more</a></li>
+							</ul>	
+						</div>
+					</section>
+
+				{% when "posts-list" %}
+					<section id="{{ section.id }}" class="wrapper {{ section.color-style }} spotlights">
+						{% for post in site.[section.source] %}
+						<section>
+							<a href="{{ post.url }}" class="image"><img src="/images/{{ post.thumbnail | default:"pic01.jpg" }}" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>{{ post.title }}</h2>
+									<p>{{ post.excerpt }}</p>
+									<ul class="actions">
+										<li><a href="{{ post.url }}" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						{% endfor %}
+					</section>
+
+				{% when "features-list" %}
+					<section id="{{ section.id }}" class="wrapper {{ section.color-style }} fade-up">
+						<div class="inner">
+							<h2>{{ section.title }}</h2>
+							<p>{{ section.description }}</p>
+							<div class="features">
+								{% for feature in site.[section.source] %}
+								{% if feature.title %}
+								<section>
+								<a href="{{ feature.url }}">
+									<span class="icon solid major fa-{{ feature.icon | default:"code" }}"></span>
+									<h3>{{ feature.title }}</h3>
+									<p>{{ feature.description | default:"Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus."}}</p>
+								</a>
+								</section>
+								{% endif %}
+								{% endfor %}
+							</div>
+							<ul class="actions">
+								<li><a href="generic.html" class="button">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
+
+				{% when "contact-form" %}
+					<section id="{{ section.id }}" class="wrapper {{ section.color-style }} fade-up">
+						<div class="inner">
+							<h2>{{ section.title }}</h2>
+							{% if section.description %}
+							<p>{{ section.description }}</p>
+							{% endif %}
+							<div class="split style1">
+								<section>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="name">Name</label>
+												<input type="text" name="name" id="name" />
+											</div>
+											<div class="field half">
+												<label for="email">Email</label>
+												<input type="text" name="email" id="email" />
+											</div>
+											<div class="field">
+												<label for="message">Message</label>
+												<textarea name="message" id="message" rows="5"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><a href="" class="button submit">Send Message</a></li>
+										</ul>
+									</form>
+								</section>
+
+								<section>
+									<ul class="contact">
+									{% for item in site.contacts %}
+									{% case item[0] %}
+									
+									{% when "socials" %}
+									<li>  							
+										<h3>Social networks</h3>
+            								<ul class="icons">
+            								    {% assign socials = item[1] %}
+            								    {% for social in socials %}
+            								        {% assign my_social = social[0] %}
+            								        {% assign networks = site.data.social_networks.items | where: "name", my_social %}
+            								        {% assign username = social[1] %}
+            								        {% for network in networks %}
+            								            <li><a href="{{network.url}}/{{ username }}" class="icon brands fa-{{ network.name }}" target="_blank"></a></li>
+            								        {% endfor %}
+            								    {% endfor %}
+            								</ul>
+									</li>
+
+									{% else %}
+									<li>
+										<h3>{{ item[0] | capitalize }}</h3>
+										<span> {{ item[1] | newline_to_br }}</span>
+									</li>	
+									{% endcase %}
+									{% endfor %}
+									
+									</ul>
+
+								</section>
+							</div>
+				
+
+				<!-- follow me -->
+				{% when "follow-me" %}
+				<section id="{{ section.id }}" class="wrapper {{ section.color-style }} fade-up">
+					<div class="inner">
+						<h2>{{ section.title }}</h2>
+						{% if section.description %}
+						<p>{{ section.description }}</p>
+						{% endif %}
+					
+						<div class="split {{ section.color-style }}">
+						{% assign contacts = site.contacts %}
+						<!--
+							split 1
+						-->
+							<div class="contact">
+								{% if contacts.address %}
+									{% if contacts.phone %}
+									{% assign offset = 2 %}
+									{% else %}
+										{% assign offset = 1 %}
+									{% endif %}
+								{% else %}
+								{% assign offset = 0 %}
+								{% endif %}
+								{% for contact in contacts offset:offset %}
+									{% case contact[0] %}
+									{% when "socials" %}
+									<span>
+										<h3>Follow me</h3>
+										<ul class="icons">
+											{% for social in contacts.socials %}
+											{% assign my_social = social[0] %}
+											{% assign networks = site.data.social_networks.items | where: "name", my_social %}
+												{% for network in networks %}
+												<li><a href="{{network.url}}/{{ username }}" class="medium icon brands fa-{{ network.name }}" target="_blank"></a></li>
+												{% endfor %}
+											{% endfor %}
+										</ul>
+									</span>
+									{% when "email" %}
+									<!-- <li>
+										<a href="mailto:{{ site.email }}">
+										<button class="button">Send me an E-mail</button>
+										</a>
+									</li> -->
+									<ul class="actions">
+										<li><a href="mailto:{{ site.email }}" class="button">Send me an email</a></li>
+									</ul>
+									{% else %}
+									<li>
+										<h3>{{ contact[0] | capitalize }}</h3>
+										<span>{{ contact[1] | newline_to_br }}</span>
+									</li>
+
+									{% endcase %}
+								{% endfor %}
+							</div>
+						<!--
+							split 2
+						-->
+						{% if contacts.address %}
+							<ul class="contact">
+								<li>
+								<h3>Address</h3>
+								<span>
+									{{ contacts.address | newline_to_br }}
+									</span>
+									</li>
+								{% if contacts.phone %}
+								<li>
+									<h3>Telephone</h3>
+									<span>{{ contacts.phone }}</span>
+								</li>
+								{% endif %}
+							</ul>
+						{% endif %}
+							
+						</div>
+
+					</div>
+				</section>
+				
+			
+			{% endcase %}
+			{% endfor %}
+			<!-- fin div wrapper -->
+		</div> 
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

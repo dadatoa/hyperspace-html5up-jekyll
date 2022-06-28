@@ -1,1 +1,14 @@
-{{ content }}
+---
+layout: generic
+---
+<section id="main" class="wrapper">
+    <div class="inner">
+        <h1 class="major">{{ page.title | capitalize }}</h1>
+
+        {% if page.illustration %}
+        <span class="image fit"><img src="{{ "/images" }}/{{ page.illustration }}" alt="" /></span>
+        {% endif %}
+
+        {{ content }}
+    </div>
+</section>

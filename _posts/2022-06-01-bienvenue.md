@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: bienvenue
 date: 2022-06-01
 ---
