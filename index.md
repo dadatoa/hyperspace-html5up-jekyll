@@ -24,7 +24,6 @@ sections :
       description: Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
 # three 
     - id: three
-      html_id: three
       title: get in touch
       template: follow-me #contact-form or change to follow-me if you just want to make contact info appear with email-me button
       color-style: style1
