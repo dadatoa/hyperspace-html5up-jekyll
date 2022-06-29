@@ -4,8 +4,9 @@ permalink: /about/
 title: "about"
 icon: wind
 ---
-Bienvenue sur mon blog test Jekyll.
+Bienvenue sur test du thème html5up hyperspace intégré à Jekyll.
 
-Je vais ici tester quelques fonctionnalités de Jekyll et des github Pages. Pour cela je fonctionne avec un site minimaliste, j'utilise le thème minima directement fourni par github pages (version 2.XX) qui n'est pas la dernière mais c'est pas grave. L'idée c'est d'avoir les layouts de base, et après d'optionner la gestion de contenu et de tester les fonctionnalités de Github pages et Jekyll, dans le but d'utiliser le SSG en production et pourquoi pas avec des clients.
+Je n'aime pas les thèmes par défaut proposés par Github pages. En plus, globalement, ils n'apportent pas grand chose de plus par rapport à un thème html habituel, dans le sens ou ils n'exploitent pas les possibilités de Jekyll sur les Github Pages. Donc j'ai décidé d'essayer de faire un truc plus sympa, et voilà ! Jekyllisation d'un thème html.
 
-N'hésitez pas à visiter mon profil Github !
+N'hésitez pas à visiter mon profil Github : https://github.com/dadatoa
+et le repo du projet : https://github.com/dadatoa/hyperspace-html5up-jekyll
