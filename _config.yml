@@ -7,6 +7,7 @@ description: >
 
 show_excerpts: true
 # excerpt_separator: <!--more-->  ## you can specify your own separator.
+# if you do not specify separator, excerpt will show content until the next html tag (for example <p>)
 
 
 ## add your contact informations / or not : will appear on the home page (last section: get in touch)

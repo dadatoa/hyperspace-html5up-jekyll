@@ -10,7 +10,7 @@ layout: default
             <li><a href="{{ "/" | relative_url }}">Home</a></li>
             {% for item in site.pages %}
             {% if item.title %}
-            <li><a href="{{ item.url }}" {% if item.url == page.url %}class="active"{% endif %}>{{ item.title }}</a></li>
+            <li><a href="{{ item.url | relative_url }}" {% if item.url == page.url %}class="active"{% endif %}>{{ item.title }}</a></li>
             {% endif %}
             {% endfor %}
         </ul>
@@ -35,10 +35,10 @@ layout: default
 </footer>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="{{ "assets/js/jquery.min.js" | relative_url }}"></script>
+<script src="{{ "assets/js/jquery.scrollex.min.js" | relative_url }}"></script>
+<script src="{{ "assets/js/jquery.scrolly.min.js" | relative_url }}"></script>
+<script src="{{ "assets/js/browser.min.js" | relative_url }}"></script>
+<script src="{{ "assets/js/breakpoints.min.js"| relative_url }}"></script>
+<script src="{{ "assets/js/util.js" | relative_url }}"></script>
+<script src="{{ "assets/js/main.js" | relative_url }}"></script>

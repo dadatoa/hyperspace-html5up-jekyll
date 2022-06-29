@@ -6,7 +6,7 @@ layout: generic
     <h1 class="major">{{ page.title | capitalize }}</h1>
 
     {% if page.illustration %}
-    <span class="image fit"><img src="{{ "/images" }}/{{ page.illustration }}" alt="" /></span>
+    <span class="image fit"><img src="{{ "/images/" | append: page.illustration | relative_url }}" alt="" /></span>
     {% endif %}
 
 
@@ -24,9 +24,9 @@ layout: generic
 
     <article class="wrapper postcard">
         {% if item.thumbnail %}
-        <a href="#" class="image"><img src="/images/{{ item.thumbnail }}" alt="" data-position="center center" /></a>
+        <a href="#" class="image"><img src="{{ "/images/" | append: item.thumbnail | relative_url }}" alt="" data-position="center center" /></a>
         {% else %}
-        <a href="#" class="image"><img src="/images/pic03.jpg" alt="" data-position="center center" /></a>
+        <a href="#" class="image"><img src="{{ "/images/pic03.jpg" | relative_url }}" alt="" data-position="center center" /></a>
         {% endif %}
         <div class="inner">
             <h2>{{ item.title }}</h2>
@@ -34,7 +34,7 @@ layout: generic
             <p>{{ item.excerpt }}</p>
             {% endif %}
             <ul class="actions">
-                <li><a href="{{ item.url }}" class="button">Learn more</a></li>
+                <li><a href="{{ item.url | relative_url }}" class="button">Learn more</a></li>
             </ul>
         </div>
 
