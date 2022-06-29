@@ -6,7 +6,7 @@ layout: generic
     <h1 class="major">{{ page.title | capitalize }}</h1>
 
     {% if page.illustration %}
-    <span class="image fit"><img src="{{ "/images" }}/{{ page.illustration }}" alt="" /></span>
+    <span class="image fit"><img src="{{ "/images/" | append: page.illustration | relative_url }}" alt="" /></span>
     {% endif %}
 
 
@@ -34,7 +34,7 @@ layout: generic
             <p>{{ item.excerpt }}</p>
             {% endif %}
             <ul class="actions">
-                <li><a href="{{ item.url }}" class="button">Learn more</a></li>
+                <li><a href="{{ item.url | relative_url }}" class="button">Learn more</a></li>
             </ul>
         </div>
 
