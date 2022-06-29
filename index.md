@@ -9,7 +9,7 @@ sections :
     - id: one
       title: who we are
       template: posts-list
-      #show-title: false 
+      posts-limit: 3
       color-style: style2
       animate: spotlights
       source: posts
@@ -17,7 +17,6 @@ sections :
     - id: two
       title: what we do
       template: features-list
-      #show-title: true
       color-style: style3
       animate: fade-up
       source: pages
