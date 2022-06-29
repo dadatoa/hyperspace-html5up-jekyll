@@ -24,9 +24,9 @@ layout: generic
 
     <article class="wrapper postcard">
         {% if item.thumbnail %}
-        <a href="#" class="image"><img src="/images/{{ item.thumbnail }}" alt="" data-position="center center" /></a>
+        <a href="#" class="image"><img src="{{ "/images/" | append: item.thumbnail | relative_url }}" alt="" data-position="center center" /></a>
         {% else %}
-        <a href="#" class="image"><img src="/images/pic03.jpg" alt="" data-position="center center" /></a>
+        <a href="#" class="image"><img src="{{ "/images/pic03.jpg" | relative_url }}" alt="" data-position="center center" /></a>
         {% endif %}
         <div class="inner">
             <h2>{{ item.title }}</h2>
