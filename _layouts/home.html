@@ -46,7 +46,7 @@
 
 				{% when "posts-list" %}
 					<section id="{{ section.id }}" class="wrapper {{ section.color-style }} spotlights">
-						{% for post in site.[section.source] %}
+						{% for post in site.[section.source] | limit: section.posts-limit %}
 						<section>
 							{% if post.thumbnail %}
 							<a href="{{ post.url | relative_url }}" class="image"><img src="{{ "/images/" | append: post.thumbnail | relative_url }}" alt="" data-position="center center" /></a>
