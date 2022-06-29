@@ -48,7 +48,11 @@
 					<section id="{{ section.id }}" class="wrapper {{ section.color-style }} spotlights">
 						{% for post in site.[section.source] %}
 						<section>
-							<a href="{{ post.url | relative_url }}" class="image"><img src="{{ "/images/" | append: post.thumbnail | default:"pic01.jpg" | relative_url }}" alt="" data-position="center center" /></a>
+							{% if post.thumbnail %}
+							<a href="{{ post.url | relative_url }}" class="image"><img src="{{ "/images/" | append: post.thumbnail | relative_url }}" alt="" data-position="center center" /></a>
+							{% else %}
+							<a href="{{ post.url | relative_url }}" class="image"><img src="{{ "/images/pic03.jpg" | relative_url }}" alt="" data-position="center center" /></a>
+							{% endif %}
 							<div class="content">
 								<div class="inner">
 									<h2>{{ post.title }}</h2>
